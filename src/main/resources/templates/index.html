@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="base :: head('住所一覧')">
 </head>
-<body>
-$END$
+
+<body class="bg-gray-100">
+
+<header th:replace="header :: header">
+</header>
+
+<main class="container mx-auto pt-20">
+
+    <h2 class="text-2xl font-bold mb-4">
+        Addressbook-system for portfolio
+    </h2>
+
+</main>
+
 </body>
 </html>

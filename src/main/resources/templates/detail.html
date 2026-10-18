@@ -1,10 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="base :: head('住所一覧')">
 </head>
-<body>
-$END$
-</body>
-</html>
+
+<body class="bg-gray-100">
+
+<header th:replace="header :: header">
+</header>
+
+<main class="container mx-auto pt-20">
+
+    <h2 class="text-2xl font-bold mb-4">
+        住所一覧
+    </h2>
+
+    <div class="space-y-2 mb-6">
+        <p class="border p-4">ID:
+            <span th:text="${address.id}"></span>
+        </p>
+        <p class="border p-4">氏名:
+            <span th:text="${address.name}"></span>
+        </p>
+        <p class="border p-4">メール:
+            <span th:text="${address.email}"></span>
+        </p>
+        <p class="border p-4">電話:
+            <span th:text="${address.phone}"></span>
+        </p>
+        <p class="border p-4">郵便番号:
+            <span th:text="${address.postalCode}"></span>
+        </p>
+        <p class="border p-4">住所:
+            <span th:text="${address.address}"></span>
+        </p>
+    </div>
+
+    <a
+            href = "/list"
+            class="bg-blue-600 text-white px-6 py-2 rounded">一覧
+    </a>
+
+</main>

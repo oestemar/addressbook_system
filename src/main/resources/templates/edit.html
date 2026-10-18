@@ -1,10 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="base :: head('住所一覧')">
 </head>
-<body>
-$END$
-</body>
-</html>
+
+<body class="bg-gray-100">
+
+<header th:replace="header :: header">
+</header>
+
+<main class="container mx-auto pt-20">
+
+    <h2 class="text-xl font-bold mb-4">編集</h2>
+
+    <form th:action="@{/edit/{id}(id=${address.id})}"
+          method="post"
+          class="space-y-4">
+
+        <input
+                type="text"
+                name="name"
+                th:value="${address.name}"
+                class="border rounded px-3 py-2 w-full">
+
+        <input
+                type="text"
+                name="email"
+                th:value="${address.email}"
+                class="border rounded px-3 py-2 w-full">
+
+        <input
+                type="text"
+                name="phone"
+                th:value="${address.phone}"
+                class="border rounded px-3 py-2 w-full">
+
+        <input
+                type="text"
+                name="postalCode"
+                th:value="${address.postalCode}"
+                class="border rounded px-3 py-2 w-full">
+
+        <input
+                type="text"
+                name="address"
+                th:value="${address.address}"
+                class="border rounded px-3 py-2 w-full">
+
+        <button
+                type="submit"
+                class="bg-green-600 text-white px-6 py-2 rounded">
+
+            更新
+
+        </button>
+
+    </form>
+
+</main>
+

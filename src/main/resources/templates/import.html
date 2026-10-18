@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="base :: head('住所一覧')">
+</head>
+
+<body class="bg-gray-100">
+
+<header th:replace="header :: header">
+</header>
+
+<main class="container mx-auto pt-20">
+
+    <h2 class="text-xl font-bold mb-4">新規登録</h2>
+
+    <form th:action="@{/import}"
+          method="post"
+          enctype="multipart/form-data"
+          class="space-y-4">
+
+        <input
+                type="file"
+                name="file"
+                class="border rounded px-3 py-2 w-full">
+
+        <button
+                type="submit"
+                class="bg-green-600 text-white px-6 py-2 rounded">
+
+            CSV取込
+
+        </button>
+
+    </form>
+
+</main>
+

@@ -1,10 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="base :: head('住所一覧')">
 </head>
-<body>
+
+<body class="bg-gray-100">
+
+<header th:replace="header :: header">
+</header>
+
+<main class="container mx-auto pt-20">
+
+    <h2 class="text-2xl font-bold mb-4">
+        住所一覧
+    </h2>
+
+    <form th:action="@{/list}"
+          method="get"
+          class="space-y-4">
+
+        <input
+                type="text"
+                name="keyword"
+                placeholder="キーワードを一つ入力してください"
+                class="border rounded px-3 py-2 w-78">
+        <button
+                type="submit"
+                class="bg-green-600 text-white px-6 py-2 rounded">
+
+            検索
+
+        </button>
+    </form>
+    <a th:href="@{/import}"
+           class="bg-blue-600 text-white px-6 py-2 rounded">
+
+            CSV取込
+
+    </a>
+
+    <table class="min-w-full my-4 border">
+        <thead class="bg-gray-200">
+        <tr>
+            <th class="border p-2">ID</th>
+            <th class="border p-2">氏名</th>
+            <th class="border p-2">メール</th>
+            <th class="border p-2">電話</th>
+            <th class="border p-2">詳細</th>
+            <th class="border p-2">編集</th>
+            <th class="border p-2">削除</th>
+        </tr>
+
+        </thead>
+
+        <tbody>
+        <tr th:each="address : ${addresses}">
+            <td class="border p-2" th:text="${address.id}"></td>
+            <td class="border p-2" th:text="${address.name}"></td>
+            <td class="border p-2" th:text="${address.email}"></td>
+            <td class="border p-2" th:text="${address.phone}"></td>
+            <td class="border p-2 text-center">
+                <a th:href="@{/detail/{id}(id=${address.id})}"
+                   class="text-blue-500 hover:text-blue-700">詳細</a>
+            </td>
+            <td class="border p-2 text-center">
+                <a th:href="@{/edit/{id}(id=${address.id})}"
+                   class="text-blue-500 hover:text-blue-700">編集</a>
+            </td>
+            <td class="border p-2 text-center">
+                <a th:href="@{/delete/{id}(id=${address.id})}"
+                   class="text-blue-500 hover:text-blue-700">削除</a>
+            </td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(addresses)}">
+            <td colspan="7" class="border p-2 text-center">
+                該当するデータはありません
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</main>
 
 </body>
 </html>
