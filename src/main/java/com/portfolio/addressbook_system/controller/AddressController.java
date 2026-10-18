@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.data.domain.Sort;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -40,7 +41,9 @@ public class AddressController {
         if (keyword != null && !keyword.isEmpty()) {
             addresses = addressRepository.findByNameContaining(keyword);
         } else {
-            addresses = addressRepository.findAll();
+            addresses = addressRepository.findAll(
+                    Sort.by("id")
+            );
         }
 
         model.addAttribute("addresses", addresses);
