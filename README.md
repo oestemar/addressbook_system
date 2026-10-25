@@ -7,7 +7,7 @@ Spring Bootを使用して開発した住所録管理システムです。
 ## 本番環境
 URL:https://addressbooksystem-production.up.railway.app/
 
-## 試用技術
+## 使用技術
 ### バックエンド
 - Java21
 - Spring Boot
